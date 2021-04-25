@@ -1,9 +1,11 @@
 import { parseISO, format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { usePlayer } from '../../contexts/PlayerContext';
 import api from '../../services/api';
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
 import styles from './episode.module.scss';
@@ -17,6 +19,7 @@ type Episode = {
     description: string;
     url: string;
     durationAsString: string;
+    duration: number;
 }
 
 type EpisodeProps = {
@@ -25,8 +28,14 @@ type EpisodeProps = {
 
 export default function Episode(props: EpisodeProps) {
     const { episode } = props;
+
+    const player = usePlayer();
+
     return (
         <div className={styles.episode}>
+            <Head>
+                <title>{episode.title} | Podcastr </title>
+            </Head>
             <div className={styles.thumbnailContainer}>
                 <Link href='/'>
                     <button type='button'>
@@ -39,7 +48,7 @@ export default function Episode(props: EpisodeProps) {
                     height={160}
                     objectFit='cover'
                 />
-                <button type='button'>
+                <button type='button' onClick={() => player.play(episode)}>
                     <img src='/play.svg' alt='Tocar' />
                 </button>
             </div>
@@ -61,16 +70,16 @@ export default function Episode(props: EpisodeProps) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
 
-    const { data } = await api.get(`/episodes/`, { 
-        params:{
+    const { data } = await api.get(`/episodes/`, {
+        params: {
             _limit: 2,
             _sort: 'published_at',
             _order: 'desc'
         }
     })
 
-    const paths = data.map(episode => ({ params: { slug: episode.id }}))
-    
+    const paths = data.map(episode => ({ params: { slug: episode.id } }))
+
     return {
         paths,
         fallback: 'blocking'
