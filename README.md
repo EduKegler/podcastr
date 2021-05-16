@@ -6,19 +6,16 @@ Demo: https://podcastr-edukegler.vercel.app/
 
 # What is this?
 
-This is simple SPA to listen too a list of all the podcast episodes, for it was created an audio player.
-It was created using the React / Typescript / NextJS stack, with SCSS preprocessor.
-
-The SPA consumes the https://www.themoviedb.org/ API and saves the bookmark and Watch Later List in LocalStorage, 
-so that each user can have their own list without the need to create a new token.
+This is simple SPA to listen too a list of all the podcast episodes, an audio player was created for this purpose.
+This project was created using the React / Typescript / NextJS stack, with SCSS preprocessor.
 
 # How to run?
 
 Just follow the steps:
 Clone this project and run `npm install`.
 
-The project consume an API, you can see it here https://edukegler-podcastr-api.herokuapp.com/.
-If you want to consume your own api, you can change the .env file and set the API url. e.g.
+The project consumes an API, you can see it here https://edukegler-podcastr-api.herokuapp.com/. 
+If you want to consume your own API, you can change the .env file and set the API URL. e.g.
 
 ```
 REACT_APP_URL=https://edukegler-podcastr-api.herokuapp.com/
