@@ -1,8 +1,7 @@
 # Podcastr
 
 Demo: https://podcastr-edukegler.vercel.app/
-
-![Podcastr](https://user-images.githubusercontent.com/30960212/118411699-3a8d6400-b66c-11eb-91bf-ed284e11320e.gif)
+![Podcastr](https://user-images.githubusercontent.com/30960212/118414999-2c484380-b67e-11eb-83f1-f899c1ee58e5.gif)
 
 # What is this?
 
@@ -21,5 +20,5 @@ If you want to consume your own API, you can change the .env file and set the AP
 REACT_APP_URL=https://edukegler-podcastr-api.herokuapp.com/
 ```
 
-After that will can run `npm run start` and see the project in `localhost:3000`.
+After that will can run `npm run dev` and see the project in `localhost:3000`.
 
