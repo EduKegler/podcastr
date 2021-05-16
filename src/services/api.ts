@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'https://edukegler-podcastr-api.herokuapp.com/'
+    baseURL: process.env.REACT_APP_URL
 });
 
 export default api;
